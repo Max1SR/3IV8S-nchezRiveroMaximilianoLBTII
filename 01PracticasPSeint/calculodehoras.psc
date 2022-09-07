@@ -1,65 +1,79 @@
 Algoritmo calculodehoras
 	Escribir "Desarrolle un algoritmo que permita calcular la nomina de unos trabajadores"
 	horas<-0;
+	horasextra<-0
 	dias<-0;
 	jornada<-0;
 	salario<-0;
 	nomina<-0;
 	diasextra<-0;
 	
-	Escribir "Ingrese el numero de horas trabajadas a la semana en dias laborales"
-	Leer horas
-	Escribir "Ingrese el numero de dias trabajados a la semana en dias laborales"
-	Leer dias
 	Escribir "Ingrese el número según la jornada trabajada:" 
 	Escribir "1.-Diurno"
 	Escribir "2.-Nocturno"
 	Escribir "3.-Mixto"
 	Leer jornada
+	Escribir "Ingrese el numero de dias trabajados en la quincena (Lunes a viernes)"
+	Leer dias
+	Escribir "Ingrese el numero de horas trabajadas en la quincena en dias laborales, sin contar horas extra (Lunes a viernes)"
+	Leer horas
 	Escribir "Ingrese el salario por hora"
 	Leer salario
-
+	Escribir "Escribe el número de horas extras que trabajaste en la quincena en dias laborales (Lunes a Viernes), si no trabajaste horas extra coloca un 0 como respuesta"
+	Leer horasextra
 	
 	Segun jornada Hacer
 		1:
-			Si dias<=5 Entonces
-				Si horas<=40 Entonces
-					nomina=horas * dias * salario
-					Escribir "La nomina es: ", nomina
-				SiNo
-					Si horas>40 y horas<60 Entonces
-						nomina=horas * dias * (2*salario)
-						Escribir "La nomina es: " , nomina
+			Si dias>=0 y dias<=10 Entonces
+				Si horas>=0 y horas<=80  Entonces
+					Si horasextra>=0 y horasextra<=9 Entonces
+						nomina=horas * salario + (2*horasextra*salario)
+						Escribir "La nomina es: ", nomina
 					SiNo
-						Escribir "Las horas son incorrectas"
+						Si horasextra>9 y horasextra<=11 Entonces
+							nomina=horas * salario + (2*horasextra*salario) + (3 * (horasextra - 9) * salario)
+							Escribir "La nomina es: ", nomina
+						SiNo
+							Escribir "Las horas extra son incorrectas"
+						Fin Si
 					Fin Si
+				SiNo
+					Escribir "Las horas son incorrectas"
 				Fin Si
 			SiNo
-				Si dias>5 y dias<=7 Entonces
-					Escribir "Indique el numero según los dias extra trabajados"
+				Si dias>0 y dias<=11 Entonces
+					Escribir "Indique el numero según el dia extra trabajado"
 					Escribir "1.-Sábado"
 					Escribir "2.-Domingo"
-					Escribir "3.-Sábado y Domingo"
 					Leer diasextra
 					
 					Segun diasextra Hacer
 						1:
-							Si expresion_logica Entonces
-								acciones_por_verdadero
+							Si horas>=0 y horas<=80  Entonces
+								Si horasextra>=0 y horasextra<=9 Entonces
+									nomina=horas * salario + (2*horasextra*salario)
+									Escribir "La nomina es: ", nomina
+								SiNo
+									Si horasextra>9 y horasextra<=11 Entonces
+										nomina=horas * salario + (2*horasextra*salario) + (3 * (horasextra - 9) * salario)
+										Escribir "La nomina es: ", nomina
+									SiNo
+										Escribir "Las horas extra son incorrectas"
+									Fin Si
+								Fin Si
 							SiNo
-								acciones_por_falso
-							Fin Si
+								Escribir "Las horas son incorrectas"
+							Fin Si	
+							
+							
 						2:
-							secuencia_de_acciones_2
-						3:
-							secuencia_de_acciones_3
-						De Otro Modo:
-							secuencia_de_acciones_dom
+
+						
 					Fin Segun
 				SiNo
-					acciones_por_falso
+					Escribir "Los dias son incorrectos"
 				Fin Si
-			Fin Si
+			Fin si
 		2:
 			Si jornada==Nocturno Entonces
 				Si horas<=7 Entonces
