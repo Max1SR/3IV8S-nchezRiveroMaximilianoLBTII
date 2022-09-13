@@ -18,6 +18,7 @@ class EntradaTexto {
 
         // tipo de dato
         String nombre;
+        int edad;
         // el ; es el fin de linea
 
         // instancia, es un objeto
@@ -27,6 +28,9 @@ class EntradaTexto {
 
         nombre = System.console().readLine();
 
-        System.out.println("Hola " + nombre + " bienvenido a tu programita");
+        System.out.println("Por favor introduce tu edad");
+        edad = Integer.parseInt(System.console().readLine());
+
+        System.out.println("Hola " + nombre + " bienvenido a tu programita, tienes " + edad + " anios");
     }
 }
